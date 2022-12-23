@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/fs.css'%}" type="text/css">
+</head>
+<body>
+    <header class="header">
+        <span class="header_title">Log In</span>
+<!--        <button class="btn btn_log">Create account</button>-->
+        <a href="../registration/" class="btn btn_create">Create account</a>
+    </header>
+
+    <main>
+        <section class="authentication">
+            <div class="container authentication_container">
+                <form action=" " method="post" class="authentication_form form">
+                    {% csrf_token %}
+                    <ul class="list-reset form_list">
+                        <li class="form_item">
+                            <p class="form_title">Имя</p>
+                             {{ form.username }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Пароль</p>
+                             {{ form.password }}
+                        </li>
+                    </ul>
+                    <button type="submit" class="btn input_btn btn-reset">Вход</button>
+                    {{ form.errors }}
+                </form>
+                <a href="../" class="btn btn-reset btn-back">Назад</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

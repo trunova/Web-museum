@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change museum piece</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/fs.css'%}" type="text/css">
+</head>
+<body>
+    <header class="header">
+        <span class="header_title">Change museum piece</span>
+    </header>
+    <main>
+        <section class="add_exhibition">
+            <div class="container add_exhibition_container">
+                <form action=" " method="post" class="add_exhibition_form form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ files }}
+                    <ul class="list-reset form_list">
+                        <li class="form_item">
+                            <p class="form_title">Название</p>
+                             {{ form.piece_name }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Описание</p>
+                             {{ form.description }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Дата и время</p>
+                             {{ form.date_of_creation }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Тип</p>
+                             {{ form.piece_type }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Автор</p>
+                             {{ form.author_id }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Номер зала</p>
+                             {{ form.hall_id }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Изображения экспоната</p>
+                             {{ form_images.image }}
+                        </li>
+                    </ul>
+                    <button type="submit"  class="btn input_btn btn-reset">Сохранить</button>
+                    {{ form.errors }}
+                    {{ form_images.errors }}
+                </form>
+                <a href="../../" class="btn btn-reset btn-back">Назад</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

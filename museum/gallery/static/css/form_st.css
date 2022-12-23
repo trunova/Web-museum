@@ -1,0 +1,127 @@
+:root {
+    --color-light: #fff;
+    --color-dark: #07060B;
+    --color-pink: #e3c6bc;
+    --color-pink-light: #f6e6e1;
+    --color-grey: #2b2b2c;
+    --color-grey-light: #9d9c9c;
+    --color-grey-dark:  #676566;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.authentication_form {
+    margin-top: 140px;
+}
+
+.registration_form {
+    margin-top: 40px;
+}
+
+.form_list {
+    width: 30%;
+}
+
+.form_input {
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 100%;
+    transition: background-color .3s ease-in-out,
+    color .3s ease-in-out;
+}
+
+.form_input:hover {
+    background-color: var(--color-pink-light);
+}
+
+.form_input:focus, .form_input:active {
+    background-color: var(--color-pink);
+    color: var(--color-grey);
+}
+
+.form_title {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--color-pink-light);
+}
+
+.input_btn, .form_btn {
+    width: 30%;
+    padding: 5px 20px;
+    height: 50px;
+    text-align: center;
+    font-size: 24px;
+    background-color: var(--color-grey-dark);
+    color: var(--color-pink-light);
+    transition: background-color .3s ease-in-out,
+    color .3s ease-in-out,
+    border .3s ease-in-out;
+}
+
+.input_btn:hover, .form_btn:hover {
+    background-color: var(--color-pink-light);
+    color: var(--color-grey);
+}
+
+.input_btn:focus, .form_btn:focus {
+    background-color: var(--color-pink-light);
+    border: 2px solid var(--color-pink);
+    color: var(--color-grey);
+}
+
+.input_btn:active, .form_btn:active {
+    background-color: var(--color-pink);
+    border: 2px solid var(--color-pink);
+    color: var(--color-grey);
+}
+
+.btn-back {
+    position: fixed;
+    left: 50px;
+    bottom: 50px;
+    font-size: 24px;
+    transition: border-bottom .3s ease-in-out;
+    color: var(--color-pink);
+}
+
+.btn-back:hover {
+    border-bottom: 2px solid var(--color-pink);
+}
+
+.btn_create {
+    padding: 14px 24px;
+    background-color: var(--color-grey-dark);
+    color: var(--color-light);
+    transition: background-color .3s ease-in-out,
+    color .3s ease-in-out;
+}
+
+.btn_create:hover {
+    background-color: var(--color-pink-light);
+    color: var(--color-dark);
+}
+
+.btn_create:focus {
+    background-color: var(--color-pink-light);
+    color: var(--color-dark);
+}
+
+.btn_create:active {
+    background-color: var(--color-pink);
+    color: var(--color-dark);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 40px;
+}
+
+.about_me__container {
+    padding: 100px;
+}

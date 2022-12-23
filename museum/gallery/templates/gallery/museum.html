@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>museum</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/fs.css'%}" type="text/css">
+</head>
+<body class="body">
+    <header class="header header_museum">
+        <span class="header_title">museum {{ piece_id }}</span>
+        <ul class="list list-reset">
+            <li class="list_item"><a href="#exhibitions">Exhibitions and events</a></li>
+            <li class="list_item"><a href="#collection">Сollection of exhibits</a></li>
+            <li class="list_item"><a href="#authors">Authors</a></li>
+            <li class="list_item"><a href="">About</a></li>
+        </ul>
+    </header>
+    {% if user.is_authenticated %}
+    <a href="about_me/" class="btn_log">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="50" height="50"><path d="M16.043,14H7.957A4.963,4.963,0,0,0,3,18.957V24H21V18.957A4.963,4.963,0,0,0,16.043,14Z"/><circle cx="12" cy="6" r="6"/>
+        </svg>
+    </a>
+    {% else %}
+    <a href="login/" class="btn btn_log btn_pink">Log In</a>
+    {% endif %}
+
+    <main class="main">
+        <section class="hero">
+            <div class="container hero_container">
+                <button class="btn hero_btn btn_pink">Visit the exhibition</button>
+                <img src='{% static "images/hero_img1.webp" %}' alt="">
+            </div>
+        </section>
+        <div class="div_img">
+            <img src='{% static "images/hero_img3.jpg" %}' alt="" class="img2" >
+        </div>
+        <section id="exhibitions" class="exhibitions">
+            <div class="container exhibitions_container">
+                <form method="post" class="exhibitions_title_panel" style="display: flex; justify-content: space-between; align-items: center;">
+                    {% csrf_token %}
+                    <h2 class="title exhibitions_title">Exhibitions and events</h2>
+                {% if user.is_authenticated %}
+                    <button value=1 name="add_exhibition" class="btn btn_create">Add exhibition</button>
+                {% endif %}
+                </form>
+                <div class="exhibitions__slider">
+                    <div class="swiper-wrapper">
+                        {% for exhibition_image in exhibition_images %}
+                        <div class="swiper-slide">
+                            <div class="exhibitions_slide">
+                                <a href="{{ exhibition_image.0.id }}/detail_exh/" class="exhibitions_slide-link">
+                                        <picture class="exhibitions_img">
+                                            <img src='{{ exhibition_image.1.image.url }}' alt="">
+                                        </picture>
+                                    <div class="slide_info">
+                                        <div class="slide_info-top">
+                                            <h3 class="exhibition_name">{{ exhibition_image.0.title }}</h3>
+                                            <time class="exhibition_time" datetime="2022-11-13 11:30">
+                                                {{ exhibition_image.0.date_and_time }}
+                                            </time>
+                                        </div>
+                                        <span class="exhibition_descr">
+                                            {{ exhibition_image.0.description }}
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="exhibitions__pagination swiper-pagination"></div>
+            </div>
+        </section>
+
+        <section id="collection" class="collection">
+            <div class="container collection_container">
+                <form method="post" class="collection_title_panel" style="display: flex; justify-content: space-between; align-items: center;">
+                    {% csrf_token %}
+                    <h2 class="collection_title title">Сollection of exhibits</h2>
+                {% if user.is_authenticated %}
+                    <button value=1 name="add_museum_piece" class="btn btn_create">Add museum piece</button>
+                {% endif %}
+                </form>
+                <ul class="collection_list list-reset">
+                    {% for pieces_image in pieces_images %}
+                    <li class="collection_item">
+                        <a href="{{ pieces_image.0.id }}/detailed_piece/" class="collection_item__link">
+                            <div class="collection_item__img">
+                                <img src='{{ pieces_image.1.image.url }}' alt="">
+                            </div>
+                            <h3 class="exh_name">{{ pieces_image.0.piece_name }}</h3>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <section id="authors" class="authors">
+            <div class="container authors_container">
+                <form method="post" class="authors_title_panel" style="display: flex; justify-content: space-between; align-items: center;">
+                    {% csrf_token %}
+                    <h2 class="authors_title title">Authors</h2>
+                {% if user.is_authenticated %}
+                    <button value=1 name="add_author" class="btn btn_create">Add author</button>
+                {% endif %}
+                </form>
+                {% for author in authors %}
+                <button class="accordion btn-reset">
+                    {{ author.full_name }}
+                    <span class="accordion__open">
+                        <svg width="31" height="31" viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0571 15.0571L15.0571 -1.31634e-06L15.9429 -1.31634e-06L15.9429 15.0571L23.8835 15.0571L31 15.0571L31 15.9429L15.9429 15.9429L15.9429 31L15.0571 31L15.0571 15.9429L2.42093e-06 15.9429L2.49836e-06 15.0571L15.0571 15.0571Z"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="panel"></div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/script.js'%}"></script>
+
+</body>
+</html>

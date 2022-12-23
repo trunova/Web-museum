@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About me</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/fs.css'%}" type="text/css">
+</head>
+<body>
+    <header class="header">
+        <span class="header_title">About Me</span>
+        <a class="btn btn_create">Edit personal information</a>
+        <a href="../logout/" class="btn btn_create">Sign out</a>
+    </header>
+
+    <main>
+        <section class="authentication">
+            <div class="container about_me__container">
+                <div class="about_me__avatar" style="border-radius: 30px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="50" height="100"><path d="M16.043,14H7.957A4.963,4.963,0,0,0,3,18.957V24H21V18.957A4.963,4.963,0,0,0,16.043,14Z"/><circle cx="12" cy="6" r="6"/>
+                    </svg>
+                </div>
+                <ul class="list-reset form_list">
+                    <li class="form_item">
+                        <p class="form_title">Имя пользователя</p>
+                        <p class="about_me__content">{{ user.username }}</p>
+                    </li>
+                    <li class="form_item">
+                        <p class="form_title">E-mail</p>
+                        <p class="about_me__content">{{ user.profile.email }}</p>
+                    </li>
+                </ul>
+                <a href="../" class="btn btn-reset btn-back">Назад</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

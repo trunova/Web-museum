@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail exhibition</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/fs.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/cssst_detale.css'%}" type="text/css">
+</head>
+<body>
+    <header class="header">
+        <span class="header_title">{{ exhibition.title }}</span>
+        <a href="../../{{ exhibition.id }}/change_exhibition/" class="btn btn_create">Change</a>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="del_{{exhibition.id}}" value="1" class="btn btn_create">Delete</button>
+        </form>
+    </header>
+
+    <main>
+        <section class="add_exhibition">
+            <div class="container">
+                <div>
+                    <ul class="list-reset">
+                        <li class="form_item">
+                            <p class="form_title">Название</p>
+                             {{ exhibition.title }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Описание</p>
+                             {{ exhibition.description }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Дата и время создания</p>
+                             {{ exhibition.date_and_time }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Изображения экспоната:</p>
+                            <ul class="list-reset" style="display:flex;">
+                                {% for select_image in select_images %}
+                                <li class="form_item" style="max-width: 300px; margin-right: 20px;">
+                                    <img src='{{ select_image.image.url }}' alt="">
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <a href="../../" class="btn btn-reset btn-back">Назад</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

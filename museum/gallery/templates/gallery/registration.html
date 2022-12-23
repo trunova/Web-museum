@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/form_st.css'%}" type="text/css">
+</head>
+<body>
+    <header class="header">
+        <span class="header_title">Create account</span>
+        <!-- <button class="btn btn_log">Create account</button> -->
+        <!-- <button class="btn btn_about_me">About Me</button> -->
+    </header>
+
+    <main>
+        <section class="registration">
+            <div class="container registration_container">
+                <form method="post" class="registration_form form" enctype="multipart/form-data">
+                     {% csrf_token %}
+                        <ul class="list-reset form_list">
+                        <li class="form_item">
+                            <p class="form_title">Имя</p>
+<!--                            <input class="form_input" type="text" name="name" placeholder="name">-->
+                             {{ form.username }}
+                        </li>
+<!--                        <li class="form_item">-->
+<!--                            <p class="form_title">Фамилия</p>-->
+<!--&lt;!&ndash;                            <input class="form_input" type="text" name="surname" placeholder="surname">&ndash;&gt;-->
+<!--                             {{ form.surname }}-->
+<!--                        </li>-->
+                        <li class="form_item">
+                            <p class="form_title">Пароль</p>
+<!--                            <input class="form_input" type="password" name="password" placeholder="password">-->
+                             {{ form.password1 }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Повторите пароль</p>
+<!--                            <input class="form_input" type="password" name="password" placeholder="repeat password">-->
+                             {{ form.password2 }}
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">E-mail</p>
+<!--                            <input class="form_input" type="email" name="email" placeholder="email">-->
+                             {{ form.email }}
+                        </li>
+                    </ul>
+                    <button type="submit" class="btn form_btn btn-reset">Зарегистрироваться</button>
+                     {{ errors }}
+                </form>
+                <button class="btn btn-reset btn-back">Назад</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
