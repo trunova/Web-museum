@@ -172,3 +172,52 @@ class AuthorForm(ModelForm):
             'required': True
             })
         }
+
+class HallForm(ModelForm):
+    class Meta:
+        model = Hall
+        fields = ['hall_number', 'title']
+        widgets = {'hall_number': TextInput(attrs={
+            'class': 'form_input',
+            'placeholder': 'hall number',
+            'required': True
+            }),
+            'title': TextInput(attrs={
+                'class': 'form_input',
+                'placeholder': 'title',
+                'required': False
+            })
+        }
+
+
+class VisitForm(ModelForm):
+    class Meta:
+        model = Visitor
+        fields = ['full_name', 'phone_number', 'email']
+        widgets = {'full_name': TextInput(attrs={
+            'class': 'form_input',
+            'placeholder': 'name',
+            'required': False
+            }),
+            'phone_number': TextInput(attrs={
+                'class': 'form_input',
+                'placeholder': 'phone number',
+                'required': True
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form_input',
+                'placeholder': 'email',
+                'required': False
+            })
+        }
+
+class ExhibitionVisitForm(ModelForm):
+    class Meta:
+        model = Exhibition_visitor
+        fields = ['exhibition_id']
+        widgets = {
+            'exhibition_id': Select(attrs={
+                'class': 'form_input',
+                'required': False
+            })
+        }

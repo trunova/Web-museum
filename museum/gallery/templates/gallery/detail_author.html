@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail author</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/stylee.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/fs.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/cssst_detale.css'%}" type="text/css">
+</head>
+<body>
+    <header class="header">
+<!--        <span class="header_title">{{ exhibition.title }}</span>-->
+        <a href="../../{{ author.id }}/change_author/" class="btn btn_create">Change</a>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="del_{{author.id}}" value="1" class="btn btn_create">Delete</button>
+        </form>
+    </header>
+
+    <main>
+        <section class="add_exhibition">
+            <div class="container">
+                <div>
+                    <ul class="list-reset">
+                        <li class="form_item">
+                            <p class="form_title">Полное имя</p>
+                             {{ author.full_name }}
+                        </li>
+                    </ul>
+                </div>
+                <a href="../../" class="btn btn-reset btn-back">Назад</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

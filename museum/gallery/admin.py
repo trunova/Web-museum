@@ -10,10 +10,6 @@ class ExhibitionAdmin(admin.ModelAdmin):
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ['full_name']
 
-@admin.register(Employee)
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ['full_name', 'post', 'email']
-
 @admin.register(Hall)
 class HallAdmin(admin.ModelAdmin):
     list_display = ['hall_number', 'title']
@@ -25,10 +21,6 @@ class Museum_pieceAdmin(admin.ModelAdmin):
 @admin.register(Visitor)
 class VisitorAdmin(admin.ModelAdmin):
     list_display = ['full_name', 'phone_number', 'email']
-
-@admin.register(Exhibition_employee)
-class Exhibition_employeeAdmin(admin.ModelAdmin):
-    list_display = ['exhibition_id', 'employee_id']
 
 @admin.register(Exhibition_museum_piece)
 class Exhibition_museum_pieceAdmin(admin.ModelAdmin):

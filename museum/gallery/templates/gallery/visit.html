@@ -24,20 +24,30 @@
                     {% csrf_token %}
                     <ul class="list-reset form_list">
                         <li class="form_item">
-                            <p class="form_title">Название</p>
-                             {{ form.title }}
+                            <p class="form_title">Имя</p>
+                            {% if user.is_authenticated %}
+                            {{ user.username }}
+                            <br><br>
+                            {% else %}
+                            {{ form.full_name }}
+                            {% endif %}
                         </li>
                         <li class="form_item">
-                            <p class="form_title">Описание</p>
-                             {{ form.description }}
+                            <p class="form_title">Номер телефона</p>
+                             {{ form.phone_number }}
                         </li>
                         <li class="form_item">
-                            <p class="form_title">Дата и время</p>
-                             {{ form.date_and_time }}
+                            <p class="form_title">Почта</p>
+                            {% if user.is_authenticated %}
+                            {{ user.profile.email }}
+                            <br><br>
+                            {% else %}
+                            {{ form.email }}
+                            {% endif %}
                         </li>
                         <li class="form_item">
-                            <p class="form_title">Экспонаты</p>
-                             {{ form_ex_piece.museum_piece_id }}
+                            <p class="form_title">Выставка</p>
+                             {{ form_exh.exhibition_id }}
                         </li>
                     </ul>
                     <button type="submit"  class="btn input_btn btn-reset">Сохранить</button>

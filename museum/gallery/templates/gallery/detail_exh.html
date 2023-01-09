@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail exhibition</title>
     <link rel="stylesheet" href="{% static 'css/normalize.css'%}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/stylee.css'%}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/fs.css'%}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/cssst_detale.css'%}" type="text/css">
 </head>
@@ -47,6 +47,20 @@
                                 </li>
                                 {% endfor %}
                             </ul>
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Посетители</p>
+                            <ul class="list-reset">
+                                {% for visitor_exh in visitor_exhs %}
+                                <li class="form_item">
+                                    {{ visitor_exh.visitor_id }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="form_item">
+                            <p class="form_title">Ко-во просмотров выставки</p>
+                             {{ counter }}
                         </li>
                     </ul>
                 </div>

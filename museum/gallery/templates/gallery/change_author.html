@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change exhibition</title>
+    <title>Change author</title>
     <link rel="stylesheet" href="{% static 'css/normalize.css'%}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/stylee.css'%}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/fs.css'%}" type="text/css">
 </head>
 <body>
     <header class="header">
-        <span class="header_title">Change exhibition {{ d }}</span>
+        <span class="header_title">Change author {{ d }}</span>
     </header>
     <main>
         <section class="add_exhibition">
@@ -22,20 +22,8 @@
                     {{ files }}
                     <ul class="list-reset form_list">
                        <li class="form_item">
-                            <p class="form_title">Название</p>
-                             {{ form.title }}
-                        </li>
-                        <li class="form_item">
-                            <p class="form_title">Описание</p>
-                             {{ form.description }}
-                        </li>
-                        <li class="form_item">
-                            <p class="form_title">Дата и время</p>
-                             {{ form.date_and_time }}
-                        </li>
-                        <li class="form_item">
-                            <p class="form_title">Экспонаты</p>
-                             {{ form_ex_piece.museum_piece_id }}
+                            <p class="form_title">Полное имя</p>
+                             {{ form.full_name }}
                         </li>
                     </ul>
                     <button type="submit"  class="btn input_btn btn-reset">Сохранить</button>
